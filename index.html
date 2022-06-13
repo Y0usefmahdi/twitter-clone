@@ -1,0 +1,1868 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Twitter Clone 🔥 </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="twitter clone project for gazaskygeeks">
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+
+<style>
+/* ========================================================================================================= 
+Core 
+========================================================================================================= */
+
+@font-face {
+    font-family: 'Twitter Chirp';
+    src: url('fonts/TwitterChirpHeavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Twitter Chirp';
+    src: url('fonts/TwitterChirpMedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Twitter Chirp';
+    src: url('fonts/TwitterChirp.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Twitter Chirp';
+    src: url('fonts/TwitterChirpBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    background: #fff;
+    font-family: 'Twitter Chirp';
+    font-style: normal;
+}
+
+.site-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* padding-top: 50px; */
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.main {
+    display: flex;
+    flex: 1;
+    align-items: stretch;
+}
+
+@media (min-width: 992px) {
+
+    .main>.row {
+        display: flex;
+        margin-top: 0;
+    }
+
+    .sidebar {
+        max-width: 400px;
+        min-width: 300px;
+    }
+}
+
+:root {
+    --black: #15202b;
+    --text: #000;
+    --monst: "Montserrat", sans-serif;
+    --trend: #fafafa;
+    --border: #fafafa;
+    --text-color: var(--text);
+    --background: var(--black);
+}
+
+::selection {
+    color: #fff;
+    background: #1da1f2;
+}
+
+.wrapper {
+    width: 100%;
+    border-radius: 15px;
+    padding: 25px 25px 15px 25px;
+    border: 1px solid #e6ecf0;
+    border-radius: 25px;
+}
+
+.content {
+    max-width: 80% !important;
+    margin: 0 auto !important;
+    float: right !important;
+    margin-bottom: 35px !important;
+}
+
+.row {
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.main {
+    margin-top: 30px;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.follow-line {
+    position: absolute;
+    margin-top: -15px;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+*,
+:after,
+:before {
+    box-sizing: border-box;
+}
+
+h4 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    font-size: 1.5rem;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.left-20 {
+    margin-left: 20px;
+}
+
+.left-5 {
+    margin-left: 10px;
+}
+
+a {
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+small {
+    font-size: 80%;
+    font-weight: 400;
+}
+
+*,
+:after,
+:before {
+    box-sizing: border-box;
+}
+
+h4 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    font-size: 1.5rem;
+}
+
+.h4-title {
+    font-weight: bolder;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border);
+    padding: 13px;
+    font-style: var(--monst);
+}
+
+/*
+@media (min-width: 768px) {
+.main>.row {
+    display: flex;
+    margin-top: 0;
+  }
+}
+.sidebar.sidebar-right {
+    min-width: 38%!important;
+    max-width: 38%!important;
+    float: right!important;
+}
+.content {
+    max-width: 39%!important;
+    float: left!important;
+}
+*/
+
+/* ========================================================================================================= 
+Trending Posts 
+========================================================================================================= */
+
+.second-trend {
+    padding-top: 6px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 40%;
+}
+
+.second-trend {
+    padding-top: 6px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 40%;
+}
+
+.second {
+    padding: 0;
+    display: flex;
+}
+
+.trend {
+    border-radius: 22px;
+    background: var(--trend);
+    width: 80%;
+    margin: auto;
+    /* height: 250px;  */
+    color: var(--text-color);
+    /* margin-top: 30px; */
+}
+
+.trend-div {
+    border-bottom: 1px solid var(--border);
+}
+
+.trend-title {
+    color: var(--text-color);
+}
+
+/* ========================================================================================================= 
+Who to Follow ? 
+========================================================================================================= */
+
+.follow {
+    color: var(--text-color);
+    border-radius: 22px;
+    background: var(--trend);
+    width: 80%;
+    margin: auto;
+    /* height: 200px; */
+    margin-top: 10px;
+}
+
+.trendlist {
+    display: flex;
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: -15px;
+}
+
+.left-20 {
+    margin-left: 20px;
+}
+
+.side-name {
+    color: gray;
+}
+
+/* ========================================================================================================= 
+Side Menu
+========================================================================================================= */
+
+main {
+    position: relative;
+    height: 100vh;
+}
+
+main .helper {
+    background: rgba(0, 0, 0, 0.2);
+    color: #ffea92;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    padding: 1.2em 2em;
+    text-align: center;
+    border-radius: 20px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+main .helper span {
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 0.4em;
+    display: block;
+}
+
+.menu {
+    height: 100vh;
+    width: 240px;
+    position: fixed;
+    /* top: 0;
+  left: 0; */
+    z-index: 5;
+    outline: none;
+}
+
+.menu .avatar img {
+    width: 175px;
+    border-radius: 50%;
+    overflow: hidden;
+
+}
+
+.menu .avatar h2 {
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0.5em 0;
+    margin: 0;
+}
+
+.menu ul li {
+    padding: 0.5em 1em 0.5em 3em;
+    font-size: 0.95em;
+    font-weight: regular;
+    background-repeat: no-repeat;
+    background-position: left 15px center;
+    background-size: auto 20px;
+    transition: all 0.15s linear;
+    cursor: pointer;
+    /* width: 200px!important; */
+    padding: 12px !important;
+    font-size: 15px;
+    border-radius: 25px;
+}
+
+.menu ul li {
+    background-size: 25px;
+}
+
+.menu ul li.icon-home {
+    background-image: url(icons/side-button/1.png);
+}
+
+.menu ul li.icon-explore {
+    background-image: url(icons/side-button/2.png);
+}
+
+.menu ul li.icon-notifications {
+    background-image: url(icons/side-button/3.png);
+}
+
+.menu ul li.icon-messages {
+    background-image: url(icons/side-button/4.png);
+}
+
+.menu ul li.icon-bookmarks {
+    background-image: url(icons/side-button/5.png);
+}
+
+.menu ul li.icon-lists {
+    background-image: url(icons/side-button/6.png);
+}
+
+.menu ul li.icon-profile {
+    background-image: url(icons/side-button/7.png);
+}
+
+.menu ul li.icon-more {
+    background-image: url(icons/side-button/8.png);
+}
+
+.menu ul li:hover {
+    background-color: #fafafa;
+}
+
+.menu ul li:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 900px) and (min-width: 400px) {
+    .menu {
+        width: 90px;
+    }
+
+    .menu .avatar {
+        padding: 0.5em;
+        position: relative;
+    }
+
+    .menu .avatar img {
+        width: 60px;
+    }
+
+    .menu .avatar h2 {
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 100px;
+        margin: 0;
+        min-width: 200px;
+        border-radius: 4px;
+        background: rgba(0, 0, 0, 0.4);
+        transform: translate3d(-20px, -50%, 0);
+        transition: all 0.15s ease-in-out;
+    }
+
+    .menu .avatar:hover h2 {
+        opacity: 1;
+        transform: translate3d(0px, -50%, 0);
+    }
+
+    .menu ul li {
+        height: 60px;
+        background-position: center center;
+        background-size: 30px auto;
+        position: relative;
+    }
+
+    .menu ul li span:hover {
+        background: #33ccff;
+        border: 2px solid #33ccff;
+    }
+
+    .menu ul li span {
+        opacity: 0;
+        font-size: 18px !important;
+        position: absolute;
+        color: #ffffff !important;
+        border-radius: 25px !important;
+        border: 2px solid #000000;
+        background: #000000;
+        padding: 0.2em 1.5em;
+        border-radius: 4px;
+        top: 50%;
+        left: 80px;
+        transform: translate3d(-15px, -50%, 0);
+        transition: all 0.15s ease-in-out;
+        font-family: 'Twitter Chirp';
+        font-style: normal;
+    }
+
+    .menu ul li span:before {
+        content: '';
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 50%;
+        left: -5px;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-right: 5px solid #000000;
+        transform: translateY(-50%);
+    }
+
+    .menu ul li:hover span {
+        opacity: 1;
+        transform: translate3d(0px, -50%, 0);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    body {
+        padding-left: 0;
+    }
+
+    .menu {
+        width: 230px;
+        box-shadow: 0 0 0 100em rgba(0, 0, 0, 0);
+        transform: translate3d(-230px, 0, 0);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .menu .smartphone-menu-trigger {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 100%;
+        background: #5bc995;
+    }
+
+    .menu .smartphone-menu-trigger:before,
+    .menu .smartphone-menu-trigger:after {
+        content: '';
+        width: 50%;
+        height: 2px;
+        background: #fff;
+        border-radius: 10px;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
+    }
+
+    .menu .smartphone-menu-trigger:after {
+        top: 55%;
+        transform: translate3d(-50%, -50%, 0);
+    }
+
+    .menu ul li {
+        padding: 1em 1em 1em 3em;
+        font-size: 1.2em;
+    }
+
+    .menu:focus {
+        transform: translate3d(0, 0, 0);
+        box-shadow: 0 0 0 100em rgba(0, 0, 0, 0.6);
+    }
+
+    .menu:focus .smartphone-menu-trigger {
+        pointer-events: none;
+    }
+}
+
+/* ========================================================================================================= 
+My Code
+========================================================================================================= */
+
+.sidebar.sidebar-right {
+    min-width: 450px;
+}
+
+h4.h4-title.twitterr-h4 {
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    margin-left: 5px;
+}
+
+.lisst {
+    margin-top: -15px;
+}
+
+small.trend-title {
+    color: rgb(83, 100, 113);
+}
+
+.searchh {
+    width: 80%;
+    margin: auto;
+}
+
+p.user-list.twitterr-p,
+span.follow-line {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 165px;
+}
+
+button.followw {
+    width: 75px;
+    font-size: 15px;
+    background: #000 !important;
+    color: #fff !important;
+    border: none;
+    border-radius: 25px;
+    padding: 7px;
+    margin-left: 15px !important;
+    cursor: pointer;
+}
+
+.follow-buttonn {
+    text-align: right;
+    width: 100%;
+}
+
+.menu ul li span {
+    margin-left: 45px;
+    font-family: 'Twitter Chirp';
+    font-style: normal;
+    font-size: 20px;
+}
+
+img.mobile {
+    display: none;
+}
+
+img.desktopp {
+    display: block;
+}
+
+@media screen and (max-width: 991px) and (min-width: 400px) {
+
+    .sidebar.sidebar-right {
+        max-width: 80% !important;
+        /* min-width: 80% !important; */
+        float: right !important;
+    }
+
+    .sidebar.sidebar-right {
+    min-width: 0px!important;
+}
+
+    .sidebar.sidebar-right {
+    margin-top: -25px!important;
+}
+
+    li.credit.wavee {
+        display: none;
+    }
+
+    .tweet-info-counts div {
+        margin-right: 13px !important;
+    }
+
+    .menu .avatar img {
+        width: 60px !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+    }
+
+    .menu ul li {
+        width: 100% !important;
+    }
+
+    .menu {
+        float: left !important;
+        position: relative !important;
+        width: 20% !important;
+    }
+
+    .follow,
+    .trend,
+    .searchh {
+        width: 100% !important;
+    }
+
+    img.mobile {
+        display: block !important;
+    }
+
+    img.desktopp {
+        display: none !important;
+    }
+
+}
+
+@media screen and (max-width: 991px) and (min-width: 901px) {
+    img.mobile {
+        display: none !important;
+    }
+
+    img.desktopp {
+        display: block !important;
+    }
+
+    .menu .avatar img {
+        width: 165px !important;
+    }
+
+}
+
+img.post-iconn {
+    width: 17px !important;
+}
+
+.content {
+    min-width: 43%;
+}
+
+span.trendlist,
+p.trend-list.twitterr-p,
+#search-bar {
+    font-size: 15px;
+}
+
+.morree:hover {
+    background: #fafafa;
+}
+
+.morree {
+    text-align: center !important;
+    padding: 25px;
+    width: 100% !important;
+    margin: 0 auto !important;
+    margin-top: 25px !important;
+    cursor: pointer;
+    margin-bottom: 25px !important;
+    border-radius: 25px;
+}
+
+span.moree-tweet {
+    color: #1d9bf0;
+}
+
+.main .content,
+.main .sidebar.sidebar-right {
+    margin-top: 25px;
+}
+
+.bottom-iconnns {
+    direction: rtl;
+}
+
+.tweet-info-counts img {
+    color: #657786;
+    margin-right: 5px;
+    max-width: 20px !important;
+}
+
+.usernamee input {
+    width: 100%;
+    background: none !important;
+    border: none !important;
+    border-bottom: 1px solid #f7f7f7 !important;
+    margin-bottom: 25px;
+    margin-top: -25px;
+    line-height: 3;
+    color: #000 !important;
+    font-size: 16px;
+}
+
+.usernamee input::placeholder {
+    color: #97a5b1 !important;
+}
+
+input#usernamee-bar:focus {
+    outline: none;
+    color: #000 !important;
+}
+
+input#usernamee-bar:focus::placeholder {
+    color: #000 !important;
+}
+
+span.label:hover,
+ul.list-group-itemmmm li a:hover,
+span.side-name:hover {
+    color: #1b9cef;
+}
+
+button.followw:active {
+    background: #1da1f1 !important;
+    color: #fff !important;
+}
+
+button.followw:focus {
+    background: #1da1f1 !important;
+    color: #fff !important;
+}
+
+@media screen and (max-width: 991px) and (min-width: 700px) {
+
+    p.user-list.twitterr-p,
+    span.follow-line {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 125px;
+    }
+}
+
+@media screen and (max-width: 830px) and (min-width: 700px) {
+
+    p.user-list.twitterr-p,
+    span.follow-line {
+        max-width: 75px !important;
+    }
+}
+
+#search-bar {
+    background: var(--trend);
+    border-radius: 25px;
+    border: none;
+    outline: 0;
+    padding: 8px;
+    width: 100%;
+    color: #000;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.searchh {
+    position: relative;
+    width: 80%;
+    margin: auto;
+}
+
+.searchh>img {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    max-width: 25px;
+}
+
+.searchh>input {
+    padding-left: 50px !important;
+}
+
+.searchh>input::placeholder {
+    color: #536471;
+}
+
+span.trendlist:hover,
+.trend-div:hover {
+    background: #eef2f0;
+    cursor: pointer;
+}
+
+.trend-div {
+    padding-top: 5px;
+}
+
+.menu .avatar img {
+    padding: 3px !important;
+    border-radius: 50px !important;
+}
+
+.menu .avatar img:hover {
+    background: #ebf6fe;
+}
+
+.menu ul {
+    margin-top: -15px;
+}
+
+.trendlist:last-child,
+.trend-div:last-child {
+    border-radius: 22px;
+}
+
+/* ========================================================================================================= 
+Create new tweet
+========================================================================================================= */
+
+.input-box {
+    padding-top: 10px;
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.input-box .tweet-area {
+    position: relative;
+    max-height: 140px;
+    overflow-y: auto;
+}
+
+.tweet-area::-webkit-scrollbar {
+    width: 0px;
+}
+
+.tweet-area .placeholder {
+    position: absolute;
+    margin-top: -3px;
+    font-size: 20px;
+    color: #98A5B1;
+    pointer-events: none;
+}
+
+.tweet-area .input {
+    outline: none;
+    font-size: 17px;
+    min-height: inherit;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.tweet-area .editable {
+    position: relative;
+    z-index: 5;
+}
+
+.tweet-area .readonly {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    color: transparent;
+    background: transparent;
+}
+
+.readonly .highlight {
+    background: #cf123b40;
+}
+
+.input-box .privacy {
+    color: #1da1f2;
+    margin: 15px 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.privacy:hover,
+.icons li:hover {
+    background: #e7f5fe;
+}
+
+.privacy i {
+    font-size: 18px;
+}
+
+.privacy span {
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: 7px;
+}
+
+.bottom {
+    display: flex;
+    margin-top: 13px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bottom .icons {
+    display: inline-flex;
+}
+
+.icons li {
+    list-style: none;
+    color: #1da1f2;
+    font-size: 20px;
+    margin: 0 2px;
+    height: 38px;
+    width: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+}
+
+.bottom .content2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom .counter {
+    color: #333;
+    display: none;
+    font-weight: 500;
+    margin-right: 15px;
+    padding-right: 15px;
+    border-right: 1px solid #aab8c2;
+}
+
+.bottom button {
+    padding: 9px 18px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    background: #1da1f2;
+    color: #fff;
+    cursor: pointer;
+}
+
+.bottom button.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.bottom button:hover {
+    background: #0d8bd9;
+}
+
+/* ========================================================================================================= 
+Tweets Area
+========================================================================================================= */
+
+.tweet-wrap {
+    margin-top: 15px;
+    border-radius: 25px;
+    padding: 25px;
+    border: 1px solid #e6ecf0;
+}
+
+.tweet-header {
+    display: flex;
+    align-items: flex-start;
+    font-size: 14px;
+}
+
+.tweet-img-wrap {
+    padding-left: 60px;
+}
+
+.tweet-info-counts {
+    display: flex;
+    margin-left: 60px;
+    margin-top: 10px;
+}
+
+.tweet-img-wrap img {
+    max-width: 100%;
+    border-radius: 25px;
+}
+
+.avator {
+    border-radius: 100px;
+    width: 58px;
+    margin-right: 8px;
+}
+
+.tweet-header-info {
+    font-weight: bold;
+}
+
+.tweet-info-counts div {
+    display: flex;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.tweet-header-info span {
+    color: #657786;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+.tweet-header-info p {
+    font-weight: normal;
+    margin-top: 5px;
+}
+
+.tweet-info-counts div svg {
+    color: #657786;
+    margin-right: 10px;
+}
+
+/* ========================================================================================================= 
+Footer Credits on the right
+========================================================================================================= */
+
+ul.list-group-itemmmm li {
+    display: inline-block;
+    list-style: none;
+}
+
+ul.list-group-itemmmm li a {
+    display: inline-block;
+    text-align: left !important;
+    padding: 5px 0px 0px 0px;
+    margin-bottom: -10px !important;
+    margin: 5px;
+    min-width: 35px;
+    color: #929292;
+    text-decoration: none;
+    background-color: #fff;
+    border: #fff solid 1px;
+    font-size: 14px;
+}
+
+/* ========================================================================================================= 
+Other
+========================================================================================================= */
+
+textarea#tweet-contents {
+    background: none;
+    border: none;
+    width: 100%;
+    min-height: 80px;
+    font-family: 'Twitter Chirp';
+    font-style: normal;
+    font-size: 17px;
+}
+
+.new-badge {
+    float: right !important;
+    text-align: center !important;
+    margin-left: auto;
+    padding: 10px;
+    background: #1da1f1;
+    color: #fff;
+    border-radius: 40px;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 55px;
+    cursor: default;
+}
+
+textarea#tweet-contents::placeholder {
+    color: #97a5b1 !important;
+    font-size: 16px;
+}
+
+span.trendlist span a img:hover,
+.tweet-header img:hover {
+    background: #1da1f0 !important;
+    padding: 3px !important;
+}
+
+button.followw:hover {
+    background: #1b9cef !important;
+}
+
+li.credit {
+    margin-top: 15px;
+    font-size: 15px !important;
+    background: #000 !important;
+    color: #fff !important;
+}
+
+.yousef {
+    font-size: 18px !important;
+    /*color: #1da1f1;*/
+}
+
+.yousef2 {
+    padding-left: 15px;
+}
+
+li.credit:hover {
+    background: #000 !important;
+}
+
+.privacy span {
+    font-size: 15px !important;
+}
+
+.tweet-wrap.pre-animation {
+    opacity: 0;
+    max-height: 0;
+}
+
+.tweet-wrap {
+    transition: all 1.2s;
+}
+
+#loader {
+    background: #fcfcfb url(images/loader.gif) no-repeat center center;
+    background-size: 180px;
+    /*  background-color: #fff; */
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.wavee {
+    animation-duration: 2.8s;
+    animation-iteration-count: infinite;
+    animation-name: wave;
+    transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    10% {
+        transform: rotate(-1deg);
+    }
+
+    20% {
+        transform: rotate(5deg);
+    }
+
+    30% {
+        transform: rotate(-1deg);
+    }
+
+    40% {
+        transform: rotate(2deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+img.verified {
+    max-width: 17px;
+    margin-top: -3px;
+    margin-left: 3px;
+    margin-right: -3px;
+}
+
+img.verified:hover {
+    background: none !important;
+    padding: 0px !important;
+}
+
+.img-unselectable {
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+  </style>
+
+</head>
+<body>
+
+    <div id="loader"></div>
+
+
+    <div class="site">
+        <div class="main">
+            <div class="row">
+    
+    
+                <!-- Start Side Menu -->
+    
+                <div class="sidebar sidebar-left">
+    
+                    <nav class="menu" tabindex="0">
+                        <div class="smartphone-menu-trigger"></div>
+                        <header class="avatar">
+                            <img class="desktopp" src="images/twitter-logo.png" />
+                            <img class="mobile" src="images/mobile-logo.png" />
+                        </header>
+                        <ul>
+                            <li tabindex="0" class="icon-home"><a href="#"><span class="side-label">Home</span></a></li>
+                            <li tabindex="0" class="icon-explore"><a href="#"><span class="side-label">Explore</span></a></li>
+                            <li tabindex="0" class="icon-notifications"><a href="#"><span class="side-label">Notifications</span></a></li>
+                            <li tabindex="0" class="icon-messages"><a href="#"><span class="side-label">Messages</span></a></li>
+                            <li tabindex="0" class="icon-bookmarks"><a href="#"><span class="side-label">Bookmarks</span></a></li>
+                            <li tabindex="0" class="icon-lists"><a href="#"><span class="side-label">Lists</span></a></li>
+                            <li tabindex="0" class="icon-profile"><a href="#"><span class="side-label">Profile</span></a></li>
+                            <li tabindex="0" class="icon-more"><a href="#"><span class="side-label">More</span></a></li>
+                            <li tabindex="0" class="credit wavee">
+                                <div class="yousef2">Designed by <br> <b>
+                                        <div class="yousef">Yousef Mahdi</div>
+                                    </b></div>
+                            </li>
+                        </ul>
+                    </nav>
+    
+    
+                </div>
+    
+                <!-- End Side Menu -->
+    
+    
+                <!-- Start Tweets area -->
+                <div class="content">
+    
+    
+                    <!-- Start Share new tweet -->
+                    <div class="wrapper">
+                        <div class="input-box">
+    
+                            <div class="usernamee">
+                                <input type="text" id="usernamee-bar" placeholder="@username">
+                            </div>
+    
+    
+                            <div class="tweet-area">
+                                <textarea id="tweet-contents" class="input editable" contenteditable="true" spellcheck="false" placeholder="What's happening?" maxlength="240" onkeypress="TweetMaxLength()"></textarea>
+                            </div>
+    
+                            <div class="privacy">
+                                <img class="post-iconn" src="icons/earth.png">
+                                <span>Everyone can reply</span>
+                            </div>
+                        </div>
+                        <div class="bottom">
+    
+                            <div class="bottom-iconnns">
+                                <ul class="icons">
+                                    <li> <img class="post-iconn" src="icons/file-image.png">
+                                    </li>
+                                    <li> <img class="post-iconn" src="icons/map.png">
+                                    </li>
+                                    <li> <img class="post-iconn" src="icons/grin.png">
+                                    </li>
+                                </ul>
+                            </div>
+    
+    
+                            <div class="content2">
+                                <span class="counter">100</span>
+                                <button onclick="createTweet()">Tweet</button>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- End Share new tweet -->
+    
+    
+                    <div id="tweets-area">
+                    </div>
+    
+                    <div id="tweet-1" class="tweet-wrap">
+                        <div class="tweet-header" style="">
+                            <img src="images/mask.png" alt="" class="avator twitterr-img">
+                            <div class="tweet-header-info" style="">
+                                Elon Musk <img class="verified" src="icons/verified.png">
+    
+                                <a href="#"><span class="label">@elonmusk</span></a>
+    
+                                <span style="">
+                                    · Jun 9
+                                </span>
+                                <p style="">
+                                    Let's make Twitter maximum fun 🔥
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tweet-img-wrap" style="">
+                            <img src="images/mask3.jpeg" alt="" style="" draggable="false" (dragstart)="false;" class="tweet-img twitterr-img img-unselectable">
+                        </div>
+                        <div class="tweet-info-counts">
+                            <div class="comments">
+                                <img class="post-iconn2" src="icons/comment.png">
+                                <div class="comment-count">
+                                    200
+                                </div>
+                            </div>
+                            <div class="retweets">
+                                <img class="post-iconn2" src="icons/retweet.png">
+                                <div class="retweet-count">
+                                    555
+                                </div>
+                            </div>
+                            <div class="likes" onclick="change_color(this.parentNode.parentNode.id)">
+                                <img class="post-iconn2" src="icons/like.png">
+                                <div class="likes-count">
+                                    10.5k
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+    
+    
+                    </div>
+    
+                    <div id="tweet-2" class="tweet-wrap">
+                        <div class="tweet-header" style="">
+                            <img src="images/profile-2.png" alt="" class="avator twitterr-img">
+                            <div class="tweet-header-info" style="">
+                                Gaza Sky Geeks
+    
+                                <a href="#"><span class="label">@gazaskygeeks</span></a>
+    
+                                <span style="">
+                                    · Jun 5
+                                </span>
+                                <p style="">
+                                    🔥 We are looking for #Mentors!
+                                    Share the knowledge you got to support talented Palestinian coders to grow their careers! Join our international network of mentors!
+                                    Apply Now 👉 https://bit.ly/3zdXtuq
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tweet-img-wrap" style="">
+                            <img src="images/post-6.png" alt="" style="" draggable="false" (dragstart)="false;" class="tweet-img twitterr-img img-unselectable">
+                        </div>
+                        <div class="tweet-info-counts">
+                            <div class="comments">
+                                <img class="post-iconn2" src="icons/comment.png">
+                                <div class="comment-count">
+                                    20
+                                </div>
+                            </div>
+                            <div class="retweets">
+                                <img class="post-iconn2" src="icons/retweet.png">
+                                <div class="retweet-count">
+                                    55
+                                </div>
+                            </div>
+                            <div class="likes" onclick="change_color(this.parentNode.parentNode.id)">
+                                <img class="post-iconn2" src="icons/like.png">
+                                <div class="likes-count">
+                                    2.6k
+                                </div>
+    
+    
+                            </div>
+    
+                        </div>
+    
+    
+                    </div>
+    
+                    <div id="tweet-3" class="tweet-wrap">
+                        <div class="tweet-header" style="">
+                            <img src="images/profile-1.png" alt="" class="avator twitterr-img">
+                            <div class="tweet-header-info" style="">
+                                Gaza Sky Geeks
+    
+                                <a href="#"><span class="label">@gazaskygeeks</span></a>
+    
+                                <span style="">
+                                    · May 12
+                                </span>
+                                <p style="">
+                                    🔥 #GSGSheRises Kick-Off! <br> <br>
+                                    The BootCamp will train, coach, deploy and mentor 70 female freelancers who have digital talents
+                                    This equals closing the earning gap and empowering women, which comes as a continuing activity of how we
+                                    @GazaSkyGeeks
+                                    support Palestinian females
+                                    <br> <br>
+                                    @CanadaRepPA
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tweet-img-wrap" style="">
+                            <img src="images/post-5.png" alt="" style="" draggable="false" (dragstart)="false;" class="tweet-img twitterr-img img-unselectable">
+                        </div>
+                        <div class="tweet-info-counts">
+                            <div class="comments">
+                                <img class="post-iconn2" src="icons/comment.png">
+                                <div class="comment-count">
+                                    33
+                                </div>
+                            </div>
+                            <div class="retweets">
+                                <img class="post-iconn2" src="icons/retweet.png">
+                                <div class="retweet-count">
+                                    397
+                                </div>
+                            </div>
+                            <div class="likes" onclick="change_color(this.parentNode.parentNode.id)">
+                                <img class="post-iconn2" src="icons/like.png">
+                                <div class="likes-count">
+                                    1.3k
+                                </div>
+                            </div>
+    
+                        </div>
+                    </div>
+    
+                    <div dir="auto" class="morree"><span class="moree-tweet">Show more tweets</span></div>
+    
+                </div>
+    
+                <!-- End  Tweets area -->
+    
+                <div class="sidebar sidebar-right">
+                    <div id="sidde">
+    
+    
+                        <!-- Start Search -->
+                        <div class="searchh">
+                            <img src="icons/search.png" />
+                            <input type="text" id="search-bar" placeholder="Search Twitter" class="search-iconn">
+                        </div>
+                        <!-- End Search -->
+    
+    
+                        <!-- Start Trend area -->
+    
+                        <div class="trend">
+                            <h4 class="h4-title twitterr-h4">
+                                Trends for you
+                            </h4>
+    
+    
+                            <div class="trend-div">
+                                <div class="left-20">
+                                    <a href="#" class="twitterr-a">
+                                        <small class="trend-title">
+                                            9,968 Tweets
+                                        </small>
+                                    </a>
+                                    <a href="#" class="twitterr-a">
+                                        <p class="trend-list twitterr-p">
+                                            Adam Sandler
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+    
+    
+                            <div class="trend-div">
+                                <div class="left-20">
+                                    <a href="#" class="twitterr-a">
+                                        <small class="trend-title">
+                                            1,223 Tweets
+                                        </small>
+                                    </a>
+                                    <a href="#" class="twitterr-a">
+                                        <p class="trend-list twitterr-p">
+                                            Megan Fox
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+    
+    
+                            <div class="trend-div">
+                                <div class="left-20">
+                                    <a href="#" class="twitterr-a">
+                                        <small class="trend-title">
+                                            48.4K Tweets
+                                        </small>
+                                    </a>
+                                    <a href="#" class="twitterr-a">
+                                        <p class="trend-list twitterr-p">
+                                            Diana
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+    
+    
+                            <div class="trend-div">
+                                <div class="left-20">
+                                    <a href="#" class="twitterr-a">
+                                        <small class="trend-title">
+                                            102K Tweets
+                                        </small>
+                                    </a>
+                                    <a href="#" class="twitterr-a">
+                                        <p class="trend-list twitterr-p">
+                                            السعودية
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+    
+    
+                            <div class="trend-div">
+                                <div class="left-20">
+                                    <a href="#" class="twitterr-a">
+                                        <small class="trend-title">
+                                            1,019 Tweets
+                                        </small>
+                                    </a>
+                                    <a href="#" class="twitterr-a">
+                                        <p class="trend-list twitterr-p">
+                                            #Palestinian
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+    
+    
+                        </div>
+                        <!-- End Trend area -->
+    
+    
+                        <!-- Start Who to Follow area -->
+                        <div class="follow">
+                            <h4 class="h4-title twitterr-h4">
+                                Who to Follow
+                            </h4>
+    
+                            <div class="lisst">
+    
+    
+                                <span class="trendlist">
+                                    <span>
+                                        <a href="#" class="twitterr-a">
+                                            <img src="images/profile-4.jpeg" class="rounded-circle profile-image twitterr-img" width="50px" height="50px">
+                                        </a>
+                                    </span>
+                                    <span class="left-5">
+                                        <a href="#" class="twitterr-a">
+                                            <p class="user-list twitterr-p">
+                                                Dania 💙🦄 |
+                                                <span class="side-name">
+                                                    @DaniaaaHamdan
+                                                </span>
+                                            </p>
+                                        </a>
+                                        <span class="follow-line">
+                                            Computer Engineering at YU 💙💙💙
+                                        </span>
+                                    </span>
+    
+                                    <div class="follow-buttonn">
+                                        <button class="followw" type="button">Follow</button>
+                                    </div>
+                                </span>
+    
+    
+                                <span class="trendlist">
+                                    <span>
+                                        <a href="#" class="twitterr-a">
+                                            <img src="images/profile-1.png" class="rounded-circle profile-image twitterr-img" width="50px" height="50px">
+                                        </a>
+                                    </span>
+                                    <span class="left-5">
+                                        <a href="#" class="twitterr-a">
+                                            <p class="user-list twitterr-p">
+                                                Gaza Sky Geeks |
+                                                <span class="side-name">
+                                                    @gazaskygeeks
+                                                </span>
+                                            </p>
+                                        </a>
+                                        <span class="follow-line">
+                                            Gaza Sky Geeks official account
+                                        </span>
+                                    </span>
+    
+                                    <div class="follow-buttonn">
+                                        <button class="followw" type="button">Follow</button>
+                                    </div>
+    
+                                </span>
+    
+    
+                                <span class="trendlist">
+                                    <span>
+                                        <a href="#" class="twitterr-a">
+                                            <img src="images/mask.png" class="rounded-circle profile-image twitterr-img" width="50px" height="50px">
+                                        </a>
+                                    </span>
+                                    <span class="left-5">
+                                        <a href="#" class="twitterr-a">
+                                            <p class="user-list twitterr-p">
+                                                Elon Musk |
+                                                <span class="side-name">
+                                                    @elonmusk
+                                                </span>
+                                            </p>
+                                        </a>
+                                        <span class="follow-line">
+                                            CEO of Twitter 🧑‍💻
+                                        </span>
+                                    </span>
+    
+                                    <div class="follow-buttonn">
+                                        <button class="followw" type="button">Follow</button>
+                                    </div>
+                                </span>
+    
+    
+                            </div>
+    
+    
+                        </div>
+                        <!-- End Who to Follow area -->
+    
+    
+                        <!-- Start Footer area -->
+                        <div class="footer-lissst">
+                            <div class="footer-lissstt">
+                                <ul class="list-group-itemmmm">
+                                    <li><a href="#" id="1">Terms of Service</a></li>
+                                    <li><a href="#" id="2">Privacy Policy</a></li>
+                                    <li><a href="#" id="3">Cookie Policy</a></li>
+                                    <li><a href="#" id="4">Accessibility</a></li>
+                                    <li><a href="#" id="5">Ads info</a></li>
+                                    <li><a href="#" id="6">More</a></li>
+                                    <li><a href="#" id="7">© 2022 Twitter, Inc.</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End Footer area -->
+    
+                    </div>
+                </div>
+    
+    
+            </div>
+        </div>
+    
+    
+    </div>
+
+
+<script>
+// Change Tweets background
+function change_color(n) {
+    var colors_hex = [
+      "#e4c08a",
+      "#38a0c6",
+      "#85b7ca",
+      "#ff967e",
+      "#f0f4fc",
+      "#c9cfcf",
+      "#7a8187",
+      "#dddeee",
+      "#b73d67"
+    ]
+    
+    var random_colors = colors_hex[Math.floor(Math.random() * colors_hex.length)];
+    var element = document.getElementById(n);
+    element.style.backgroundColor = random_colors;
+}
+</script>
+
+
+<script>
+
+var tweetsData = [];
+var iname = document.getElementById("usernamee-bar");
+var icontent = document.getElementById("tweet-contents");
+
+function clonetweet(tweetid) {
+    var showIndex = tweetsData.filter(twwwets => twwwets.id == tweetid);
+    const showname = showIndex.map((x) => x.name);
+    const showcontent = showIndex.map((x) => x.content);
+    const showid = showIndex.map((x) => x.id);
+    iname.value = showname;
+    icontent.value = showcontent;
+    createTweet();
+}
+
+function createTweet() {
+    // time
+    var time = new Date();
+    var timenow = time.toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
+    });
+    // id
+    var numm = Math.floor(Math.random() * 9000000);
+    iid = numm;
+
+    // Tweet Object
+    var TweetObj = new Object();
+    TweetObj.id = iid;
+    TweetObj.name = iname.value;
+    TweetObj.content = icontent.value;
+    TweetObj.time = timenow;
+    tweetsData = [...tweetsData, TweetObj];
+    showdata();
+
+    // clear input value after share
+    var tweetcontents = document.querySelector('#tweet-contents');
+    var usernamee = document.querySelector('#usernamee-bar');
+    tweetcontents.value = '';
+    usernamee.value = '';
+}
+showdata();
+
+function showdata() {
+    const ShowAllTweets = tweetsData.slice(0).reverse().map(function(value) {
+        return (
+            `
+    <div id="tweet-${value.id}" class="tweet-wrap pre-animation">
+          <div class="tweet-header" style="">
+            <img src="images/profile.png" alt="" class="avator twitterr-img">
+            <div class="tweet-header-info" style="">
+              ${value.name} 
+
+              <a href="#"><span class="label">@${value.name}</span></a>
+
+              <span style="">
+                · ${value.time} 
+              </span>
+              <p style="">
+                ${value.content}
+              </p>
+            </div>
+
+            <div class="new-badge">NEW</div>
+
+          </div>
+          
+
+          <div class="tweet-img-wrap" style="">
+            <img src="images/post-6.png" alt="" style="" draggable="false" (dragstart)="false;" class="tweet-img twitterr-img img-unselectable">
+          </div>
+          <div class="tweet-info-counts">
+            <div class="comments">
+              <img class="post-iconn2" src="icons/comment.png">
+              <div class="comment-count">
+                0
+              </div>
+            </div>
+            <div class="retweets" onClick="clonetweet(${value.id})">
+              <img class="post-iconn2" src="icons/retweet.png">
+              <div class="retweet-count">
+                0
+              </div>
+            </div>
+            <div class="likes" onclick="change_color(this.parentNode.parentNode.id)">
+              <img class="post-iconn2" src="icons/like.png">
+              <div class="likes-count" >
+                0
+              </div>
+            </div>
+          </div>
+        </div>
+    `
+        );
+    }).join('');
+    document.getElementById("tweets-area").innerHTML = ShowAllTweets;
+
+    // show tweets with delay
+    setTimeout(function() {
+        const showtweets = document.querySelectorAll('.tweet-wrap.pre-animation');
+        for (let i = 0; i < showtweets.length; i++) {
+            showtweets[i].className = 'tweet-wrap';
+        }
+    }, 100)
+
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    function hideloader() {
+        document.getElementById('loader').style.display = 'none';
+    }
+    setTimeout(hideloader, 1600);
+})
+
+// Alert if the user types more than 240 characters
+function TweetMaxLength() {
+    var x = document.getElementById("tweet-contents").value;
+    console.log(x);
+    if ((x.length > 239)) {
+        alert("You cannot tweet more than 240 characters.");
+    }
+}
+
+</script>
+
+
+</body>
+</html>
